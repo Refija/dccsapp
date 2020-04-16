@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-latest.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+#package{
+    padding: 5px;
+}
+</style>
+</head>
+<body>
+    
+        <div>
+            <input id="text" type="text" name="field_name[]" value=""/>  
+            <select  class="increment" name='select1' id="select1">
+                <option value='1'>Mandatory</option>
+                <option value='2'>Optional</option>
+                <option value='3'>Desired</option>
+            </select>
+            <select  class="increment" name='select2' id="select2">
+                <option value='1'>Mandatory</option>
+                <option value='2'>Optional</option>
+                <option value='3'>Desired</option>
+            </select>
+            <a class="add_button" title="Add field" id="btnclone"><span class="glyphicon glyphicon-plus-sign"></span></a>
+        </div>
+    <div id="container"></div>
+   <!-- <form name="form" action="post" method="">
+    <div class="field_wrapper">
+    
+                <label id="element">Element</label>
+                <input id="input" type="text" name="t1"/>
+                <select id="select">
+                <option value="mandatory">Mandatory</option>
+                <option value="optional">Optional</option>
+                </select> 
+                <select id="select2" >
+                <option value="mandatory">Mandatory</option>
+                <option value="optional">Optional</option>
+                </select>
+                
+    
+    <input class="add_button" type="button" value="add" onClick="Add()"></div>
+    </form>
+    <div id="newDiv"></div> -->
+    <script type="text/javascript">
+        //pripada <div id="package"> Click the button to copy the div element above, including all its attributes and child elements, and append it to the document
+      /*  function Add(){
+           /* var elmnt = document.getElementsByTagName("DIV")[0];
+            var cln = elmnt.cloneNode(true);
+            document.body.appendChild(cln);*/
+           
+        //}
+    $(document).ready(function(){
+    //Once add button is clicked
+    $(addButton).click(function(){
+        //Check maximum number of input fields
+      /*  if(x > maxField){ 
+            x++; //Increment field counter
+            $(wrapper).append(fieldHTML); //Add field html
+        }*/
+        $("#container").append("<br/>");
+        $("#text").clone().appendTo("#container");
+
+        var index = $("#container select").length + 1;
+        var ddl = $("#select1").clone();
+        ddl.attr("id", "select1" + index);
+        ddl.attr("name", "select1" + index)
+        //[OPTIONAL] Copy the selected value
+       /* var selectedValue = $("#select1 option:selected").val();
+        ddl.find("option[value = '" + selectedValue + "']").attr("selected", "selected");*/
+        var ddl2 = $("#select2").clone();
+        ddl2.attr("id", "select2" + index);
+        ddl2.attr("name", "select2" + index)
+        //[OPTIONAL] Copy the selected value
+       /* var selectedValue = $("#select2 option:selected").val();
+            ddl2.find("option[value = '" + selectedValue + "']").attr("selected", "selected");
+            //Append to the DIV.
+           /* $("#container").append(fieldHTML);*/
+            $("#container").append(ddl);
+            $("#container").append(ddl2);
+            $("#container").append("<br/>");
+            
+
+    });
+    
+
+});
+
+    </script>
+</body>
+</html>
